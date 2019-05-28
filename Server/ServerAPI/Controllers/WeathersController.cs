@@ -121,6 +121,35 @@ namespace ServerAPI.Controllers
             return tmpDegreesF;
         }
 
+        [HttpGet("[action]/{city}")]
+        public async Task<IActionResult> City(string city)
+        {
+            using (var client = new HttpClient())
+            {
+                try
+                {
+                    var api_url = appSettings.OpenWeatherApiUrl;
+                    var api_id = appSettings.AppID;
+                    client.BaseAddress = new Uri("http://api.openweathermap.org");
+                    var response = await client.GetAsync($"/data/2.5/weather?q={city}&appid={api_id}&units=metric");
+                    response.EnsureSuccessStatusCode();
+
+                    var stringResult = await response.Content.ReadAsStringAsync();
+                    var rawWeather = JsonConvert.DeserializeObject<OpenWeatherResponse>(stringResult);
+                    return Ok(new
+                    {
+                        Temp = rawWeather.Main.Temp,
+                        Summary = string.Join(",", rawWeather.Weather.Select(x => x.Main)),
+                        City = rawWeather.Name
+                    });
+                }
+                catch (HttpRequestException httpRequestException)
+                {
+                    return BadRequest($"Error getting weather from OpenWeather: {httpRequestException.Message}");
+                }
+            }
+        }
+
         private bool GetWeatherByID(int id)
         {
             return _context.Weathers.Any(e => e.WeatherID == id);

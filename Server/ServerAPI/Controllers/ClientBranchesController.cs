@@ -77,9 +77,13 @@ namespace ServerAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/ClientBranches
+        /// <summary>
+        /// POST: api/ClientBranches -- Method to Create a Client Branch
+        /// </summary>
+        /// <param name="clientBranch">object to persist</param>
+        /// <returns></returns>
         [HttpPost]
-        public async Task<ActionResult<ClientBranch>> CreateClientBranch(ClientBranch clientBranch)
+        public async Task<ActionResult<ClientBranch>> PostClientBranch(ClientBranch clientBranch)
         {
             _context.ClientBranches.Add(clientBranch);
             await _context.SaveChangesAsync();

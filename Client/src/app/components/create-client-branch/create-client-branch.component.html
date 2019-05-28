@@ -1,0 +1,66 @@
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <input type="hidden" name="ClientBranchID" [value]="service.formData.ClientBranchID">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text bg-white">
+            <i class="fas fa-user-circle" [class.green-icon]="ClientBranchName.valid" 
+            [class.red-icon]="ClientBranchName.invalid && ClientBranchName.touched"></i>
+          </div>
+        </div>
+        <input type="text" name="ClientBranchName" #ClientBranchName="ngModel" 
+        [(ngModel)]="service.formData.ClientBranchName" class="form-control" placeholder="Client Branch"
+        required maxlength="100" minLength="1"/>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text bg-white">
+              <i class="fas fa-map-marker" [class.green-icon]="Latitude.valid" 
+              [class.red-icon]="Latitude.invalid && Latitude.touched"></i>
+            </div>
+          </div>
+          <input type="number" name="Latitude" #Latitude="ngModel"
+          [(ngModel)]="service.formData.Latitude" class="form-control" placeholder="Latitude"
+          required maxlength="5" minLength="1"/>
+        </div>
+      </div>
+  
+      <div class="form-group col-md-4">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text bg-white">
+              <i class="fas fa-map-marker" [class.green-icon]="Longitude.valid" 
+              [class.red-icon]="Longitude.invalid && Longitude.touched"></i>
+            </div>
+          </div>
+          <input type="number" name="Longitude" #Longitude="ngModel"
+          [(ngModel)]="service.formData.Longitude" class="form-control" placeholder="Longitude"
+          required maxlength="5" minLength="1"/>
+        </div>
+      </div>
+  
+      <div class="form-group col-md-4">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text bg-white">
+              <i class="fas fa-map-marker" [class.green-icon]="Altitude.valid" 
+              [class.red-icon]="Altitude.invalid && Altitude.touched"></i>
+            </div>
+          </div>
+          <input type="number" name="Altitude" #Altitude="ngModel"
+          [(ngModel)]="service.formData.Altitude" class="form-control" placeholder="Altitude"
+          required maxlength="5" minLength="1"/>
+        </div>
+      </div>
+    </div>
+      <div class="form-group">
+        <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">
+          <i class="fas fa-database"></i> 
+          Submit</button>
+      </div>
+  </form>
+  
+  <img src="https://image.maps.api.here.com/mia/1.6/mapview?app_id=GKbW51R76GaTBa6bFwL5&app_code=q6k7HAObzmME1LnxgpIQRw" alt="Map image"/>

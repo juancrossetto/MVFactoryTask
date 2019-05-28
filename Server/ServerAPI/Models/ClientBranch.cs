@@ -2,8 +2,7 @@
 
 namespace ServerAPI.Models
 {
-
-    //[Table("ClientBranch")]
+    
     public class ClientBranch
     {
         /// <summary>

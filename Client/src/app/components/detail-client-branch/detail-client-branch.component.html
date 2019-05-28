@@ -1,0 +1,22 @@
+<div class="container" *ngIf="clientBranch">
+  <div class="image" *ngIf="clientBranch.image">
+    <img src="{{url + 'get-image/' + clientBranch.image}}"/>
+  </div>
+  <div class="data">
+    <h1>{{clientBranch.ClientBranchName}}</h1>
+    <h3>{{clientBranch.Latitude}}</h3>
+    <p>{{clientBranch.Longitude}}</p>
+    <p>{{clientBranch.Altitude}}</p>
+    <p *ngIf="confirm == false">
+        <a class="button-edit" [routerLink]="['/edit-clientBranch', clientBranch._id]">Editar</a>
+        <a class="button-delete" (click)="setConfirm(true)">Borrar</a>
+    </p>
+
+    <p *ngIf="confirm == true">
+      <span class="confirm">¿Estas seguro de eliminar esta sucursal?</span>
+      <br/>
+      <a (click)="setConfirm(false)" class="button-edit">Cancelar</a>
+      <a class="button-delete" (click)="deleteClientBranch(clientBranch._id)">Eliminar definitivamente</a>
+    </p>
+  </div>
+</div>

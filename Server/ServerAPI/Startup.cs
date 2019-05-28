@@ -35,6 +35,9 @@ namespace ServerAPI
             services.AddDbContext<DataBaseContext>(options => 
                                                    options.UseSqlServer(Configuration.GetConnectionString("MainConnection")));
 
+            //Add CORS configuration to let cross origin calls
+            services.AddCors();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +52,12 @@ namespace ServerAPI
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            //More CORS configuration, to allow any method (post, get, delete, put, etc).
+            string angularUrl = Configuration.GetSection("AppSettings").GetValue<string>("AngularUrl");
+            app.UseCors(options => options.WithOrigins(angularUrl)
+                                            .AllowAnyMethod()
+                                            .AllowAnyHeader());
 
             app.UseHttpsRedirection();
             app.UseMvc();

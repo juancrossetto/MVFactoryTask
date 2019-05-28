@@ -1,0 +1,16 @@
+<div class="container">
+    <h2>Sucursales</h2>
+  
+    <ul>
+        <li *ngFor="let clientBranch of clientBranches" class="clientBranch">
+          <a [routerLink]="['/branch',branch.ClientBranchId]">
+            <div class="image"> <!-- Funciona como mascara, corta lo que sobre sale de esta -->
+              <img src="https://image.maps.api.here.com/mia/1.6/mapview?app_id=GKbW51R76GaTBa6bFwL5&app_code=q6k7HAObzmME1LnxgpIQRw" >
+              <!-- *ngIf="project.image"> -->
+            </div>
+            <h2>{{clientBranch.ClientBranchName}}</h2>
+            <!-- <p>{{clientBranch.category}}</p> -->
+          </a>
+        </li>
+    </ul>
+  </div>
