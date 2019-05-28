@@ -16,6 +16,16 @@ namespace ServerAPI.Models
         public string ClientBranchName { get; set; }
 
         /// <summary>
+        /// Nombre de la Ciudad
+        /// </summary>
+        public string City { get; set; }
+        
+        /// <summary>
+        /// Nombre del pais
+        /// </summary>
+        public string Country { get; set; }
+
+        /// <summary>
         /// Latitud
         /// </summary>
         public decimal Latitude { get; set; }

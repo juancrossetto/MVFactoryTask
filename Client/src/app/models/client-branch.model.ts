@@ -8,6 +8,12 @@ export class ClientBranch {
     // Nombre de la Sucursal
     ClientBranchName:string;
 
+    // Nombre de la Ciudad
+    City: string;
+
+    // Nombre del pais
+    Country: string;
+
     // Latitud
     Latitude: number;
 

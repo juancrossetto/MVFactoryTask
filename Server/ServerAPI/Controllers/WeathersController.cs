@@ -122,7 +122,7 @@ namespace ServerAPI.Controllers
         }
 
         [HttpGet("[action]/{city}")]
-        public async Task<IActionResult> City(string city)
+        public async Task<IActionResult> GetWeatherByCity(string city)
         {
             using (var client = new HttpClient())
             {

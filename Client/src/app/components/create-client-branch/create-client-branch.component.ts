@@ -25,6 +25,8 @@ export class CreateClientBranchComponent implements OnInit {
     this.service.formData = {
       ClientBranchID: 0,
       ClientBranchName: '',
+      City: '',
+      Country: '',
       Latitude: 0,
       Longitude: 0,
       Altitude: 0,

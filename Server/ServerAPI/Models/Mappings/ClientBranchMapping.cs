@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace ServerAPI.Models.Mappings
+﻿namespace ServerAPI.Models.Mappings
 {
     public class ClientBranchMapping : IEntityTypeConfiguration<ClientBranch>
     {
@@ -10,6 +7,12 @@ namespace ServerAPI.Models.Mappings
             builder.ToTable("ClientBranch");
             builder.HasKey(c => c.ClientBranchID);
             builder.Property(c => c.ClientBranchID).HasColumnName("ClientBranchID");
+            builder.Property(c => c.Country).HasColumnName("Country")
+               .HasMaxLength(50)
+               .IsRequired();
+            builder.Property(c => c.City).HasColumnName("City")
+               .HasMaxLength(50)
+               .IsRequired();
             builder.Property(c => c.ClientBranchName).HasColumnName("ClientBranchName")
                 .HasMaxLength(50)
                 .IsRequired();
