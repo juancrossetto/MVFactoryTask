@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -85,8 +86,16 @@ namespace ServerAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<ClientBranch>> PostClientBranch(ClientBranch clientBranch)
         {
-            _context.ClientBranches.Add(clientBranch);
-            await _context.SaveChangesAsync();
+            try
+            {
+
+                _context.ClientBranches.Add(clientBranch);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex )
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex);
+            }
 
             return CreatedAtAction("GetClientBranch", new { id = clientBranch.ClientBranchID }, clientBranch);
         }

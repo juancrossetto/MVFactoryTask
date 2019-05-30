@@ -16,20 +16,22 @@ export class ClientBranchService {
     this.url = Global.url;
   }
 
-  saveClientBranch(formData:ClientBranch){
+  saveClientBranch(){
     debugger;
-    let params = JSON.stringify(formData);
-    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    // let params = JSON.stringify(formData);
+    // let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    return this.http.post(this.url + 'ClientBranches', params /*Datos a guardar en BackEnd*/, {headers: headers});
+    // return this.http.post(this.url + 'ClientBranches', params /*Datos a guardar en BackEnd*/, {headers: headers});
     // return this.http.post(this.url + 'ClientBranches', formData);
+    return this.http.post(this.url + '/ClientBranches', this.formData);
   }
 
-  updateClientBranch(clientBranch):Observable<any>{
-    let params = JSON.stringify(clientBranch);
-    let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.put(this.url + "clientBranches/" + clientBranch.ClientBranchId, params, {headers:headers});
-}
+  updateClientBranch():Observable<any>{
+    // let params = JSON.stringify(clientBranch);
+    // let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    // return this.http.put(this.url + "clientBranches/" + clientBranch.ClientBranchId, params, {headers:headers});
+    return this.http.put(this.url + '/ClientBranches/'+ this.formData.ClientBranchID, this.formData);
+  }
 
   deleteClientBranch(id) : Observable<any>{
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -49,6 +51,7 @@ export class ClientBranchService {
   }
 
   refreshList(){
+    debugger;
     this.http.get(this.url + 'ClientBranches')
     .toPromise()
     .then(res => this.list = res as ClientBranch[]);

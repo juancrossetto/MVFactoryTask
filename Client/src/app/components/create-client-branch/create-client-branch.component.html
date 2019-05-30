@@ -1,4 +1,5 @@
-<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+<div class="createBranchContainer">
+  <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
     <input type="hidden" name="ClientBranchID" [value]="service.formData.ClientBranchID">
     <div class="form-group">
       <div class="input-group">
@@ -9,7 +10,7 @@
           </div>
         </div>
         <input type="text" name="ClientBranchName" #ClientBranchName="ngModel" 
-        [(ngModel)]="service.formData.ClientBranchName" class="form-control" placeholder="Client Branch"
+        [(ngModel)]="service.formData.ClientBranchName" class="form-control" placeholder="Client Name"
         required maxlength="100" minLength="1"/>
       </div>
     </div>
@@ -22,10 +23,11 @@
             [class.red-icon]="Country.invalid && Country.touched"></i>
           </div>
         </div>
-        <input type="text" name="Country" #Country="ngModel" 
+        <input type="text" name="Country" #Country="ngModel" id="searchCountry"
         [(ngModel)]="service.formData.Country" class="form-control" placeholder="Country"
         required maxlength="30" minLength="1"/>
       </div>
+      <div id="match-list-countries" name="matchListCountries"></div>
     </div>
 
     <div class="form-group">
@@ -36,10 +38,11 @@
             [class.red-icon]="City.invalid && City.touched"></i>
           </div>
         </div>
-        <input type="text" name="City" #City="ngModel" 
-        [(ngModel)]="service.formData.City" class="form-control" placeholder="City"
-        required maxlength="100" minLength="1"/>
+        <input type="text" name="City" #City="ngModel"  id="searchCity" 
+        [(ngModel)]="service.formData.City" class="form-control" placeholder="City" 
+        [disabled]="service.formData.Country" required maxlength="100" minLength="1"/>
       </div>
+      <div id="match-list-cities" name="matchListCities"></div>
     </div>
 
     <div class="form-row">
@@ -85,11 +88,12 @@
         </div>
       </div>
     </div>
-      <div class="form-group">
-        <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">
-          <i class="fas fa-database"></i> 
-          Submit</button>
-      </div>
+    <div class="form-group">
+      <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">
+        <i class="fas fa-database"></i> 
+        Submit</button>
+    </div>
   </form>
-  
-  <img src="https://image.maps.api.here.com/mia/1.6/mapview?app_id=GKbW51R76GaTBa6bFwL5&app_code=q6k7HAObzmME1LnxgpIQRw" alt="Map image"/>
+    
+    <img src="https://image.maps.api.here.com/mia/1.6/mapview?app_id=GKbW51R76GaTBa6bFwL5&app_code=q6k7HAObzmME1LnxgpIQRw" alt="Map image"/>
+</div>

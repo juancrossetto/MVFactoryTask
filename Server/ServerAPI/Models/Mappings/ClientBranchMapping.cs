@@ -1,4 +1,7 @@
-﻿namespace ServerAPI.Models.Mappings
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace ServerAPI.Models.Mappings
 {
     public class ClientBranchMapping : IEntityTypeConfiguration<ClientBranch>
     {
