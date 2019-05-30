@@ -39,7 +39,7 @@ export class ClientBranchService {
   }
 
   getClientBranches(): Observable<any> {
-    debugger;
+    
     // let headers = new HttpHeaders().set('Content-Type', 'application/json')
     return this.http.get(this.url + "/ClientBranches");
   }

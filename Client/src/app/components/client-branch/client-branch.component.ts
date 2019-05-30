@@ -5,7 +5,7 @@ import { ClientBranch } from 'src/app/models/client-branch.model';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
-  selector: 'app-client-branch',
+  selector: 'client-branch',
   templateUrl: './client-branch.component.html',
   styles: [],
   providers: [ ClientBranchService ]
@@ -27,6 +27,7 @@ export class ClientBranchComponent implements OnInit {
     //this.getClientBranches();
     this._route.params.subscribe(params => {
       let id = params.id;
+      debugger;
       if(this.idBranch){
         id = this.idBranch;
       }

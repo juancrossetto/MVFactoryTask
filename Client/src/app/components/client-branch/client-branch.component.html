@@ -1,4 +1,4 @@
-<div class="row" *nfIf="clientBranches">
+<div class="row" *ngIf="clientBranch">
     <div class="col-md-4">
       <!--Card-->
       <mdb-card cascade="true">
@@ -14,10 +14,10 @@
         <mdb-card-body cascade="true" class="text-center">
           <!--Card content-->
           <h4 class="card-title">
-            <strong>{{clientBranches.ClientBranchName}}</strong>
+            <strong>{{clientBranch.ClientBranchName}}</strong>
           </h4>
-          <h5>{{ClientBranches.Country}}</h5>
-          <h6>{{ClientBranches.City}}</h6>
+          <h5>{{clientBranch.Country}}</h5>
+          <h6>{{clientBranch.City}}</h6>
           <mdb-card-text>
             Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totam rem
             aperiam.

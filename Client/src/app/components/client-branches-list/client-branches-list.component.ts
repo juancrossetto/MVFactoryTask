@@ -33,7 +33,6 @@ export class ClientBranchesListComponent implements OnInit {
   getClientBranches() {
     this._clientBranchService.getClientBranches().subscribe(
       response => {
-        debugger;
         if(response){
           
           debugger;
@@ -42,7 +41,6 @@ export class ClientBranchesListComponent implements OnInit {
         };
       },
       error => {
-        debugger;
         console.log(<any>error);
       }
     )
