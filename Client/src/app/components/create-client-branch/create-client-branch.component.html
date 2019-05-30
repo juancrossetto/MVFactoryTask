@@ -15,7 +15,8 @@
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-row">
+    <div class="form-group col-md-6">
       <div class="input-group">
         <div class="input-group-prepend">
           <div class="input-group-text bg-white">
@@ -25,12 +26,11 @@
         </div>
         <input type="text" name="Country" #Country="ngModel" id="searchCountry"
         [(ngModel)]="service.formData.Country" class="form-control" placeholder="Country"
-        required maxlength="30" minLength="1"/>
+        (focusout)="isValidCountry(form)" required maxlength="30" minLength="1"/>
       </div>
-      <div id="match-list-countries" name="matchListCountries"></div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group col-md-6">
       <div class="input-group">
         <div class="input-group-prepend">
           <div class="input-group-text bg-white">
@@ -40,11 +40,10 @@
         </div>
         <input type="text" name="City" #City="ngModel"  id="searchCity" 
         [(ngModel)]="service.formData.City" class="form-control" placeholder="City" 
-        [disabled]="service.formData.Country" required maxlength="100" minLength="1"/>
+        required maxlength="100" minLength="1"/>
       </div>
-      <div id="match-list-cities" name="matchListCities"></div>
     </div>
-
+    </div>
     <div class="form-row">
       <div class="form-group col-md-4">
         <div class="input-group">
@@ -96,4 +95,4 @@
   </form>
     
     <img src="https://image.maps.api.here.com/mia/1.6/mapview?app_id=GKbW51R76GaTBa6bFwL5&app_code=q6k7HAObzmME1LnxgpIQRw" alt="Map image"/>
-</div>
+  </div>

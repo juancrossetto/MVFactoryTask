@@ -17,7 +17,7 @@ export class ClientBranchService {
   }
 
   saveClientBranch(){
-    debugger;
+    
     // let params = JSON.stringify(formData);
     // let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
@@ -35,24 +35,24 @@ export class ClientBranchService {
 
   deleteClientBranch(id) : Observable<any>{
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.delete(this.url + 'ClientBranches/'+ id, {headers:headers});
+    return this.http.delete(this.url + '/ClientBranches/'+ id, {headers:headers});
   }
 
   getClientBranches(): Observable<any> {
     debugger;
-    let headers = new HttpHeaders().set('Content-Type', 'application/json')
-    return this.http.get(this.url + "ClientBranches", {headers: headers});
+    // let headers = new HttpHeaders().set('Content-Type', 'application/json')
+    return this.http.get(this.url + "/ClientBranches");
   }
 
   getClientBranch(id): Observable<any>{
       let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-      return this.http.get(this.url + "ClientBranches/" + id, {headers:headers});
+      return this.http.get(this.url + "/ClientBranches/" + id, {headers:headers});
   }
 
   refreshList(){
-    debugger;
-    this.http.get(this.url + 'ClientBranches')
+    
+    this.http.get(this.url + '/ClientBranches')
     .toPromise()
     .then(res => this.list = res as ClientBranch[]);
   }

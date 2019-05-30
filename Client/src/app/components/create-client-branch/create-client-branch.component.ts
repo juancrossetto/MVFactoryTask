@@ -3,22 +3,29 @@ import { ClientBranchService } from 'src/app/services/client-branch.service';
 import { NgForm, FormsModule } from '@angular/forms';
 import { Weather } from 'src/app/models/weather.model';
 import { ToastrService } from 'ngx-toastr';
+import * as $ from 'jquery';
+import CitiesJSON from '../../../assets/js/cities.min.json';
+import CountriesJSON from '../../../assets/js/countries.json';
+
+declare var $: any;
 
 @Component({
   selector: 'app-create-client-branch',
   templateUrl: './create-client-branch.component.html',
   styles: []
 })
-export class CreateClientBranchComponent implements OnInit {
 
+export class CreateClientBranchComponent implements OnInit {
+   
   constructor(private service: ClientBranchService,
     private toastr: ToastrService) { }
 
   ngOnInit() {
     this.resetForm();
-    this.intellisenseCountries();
-    this.intellisenseCities();
-    
+    this.loadAutoCompleteOptions('searchCountry', "../../../../assets/js/countries.json");
+    this.loadAutoCompleteOptions('searchCity', "../../../../assets/js/cities.min.json");
+    // this.loadCountriesOptions();
+    // this.loadCitiesOptions();
   }
 
   resetForm(form?:NgForm){
@@ -47,7 +54,6 @@ export class CreateClientBranchComponent implements OnInit {
   }
 
   insertRecord(form:NgForm){
-    debugger;
     form.value.ClientBranchID = 0;
     form.value.CreatedAt = new Date();
     form.value.UpdatedAt = new Date();
@@ -79,77 +85,51 @@ export class CreateClientBranchComponent implements OnInit {
       }
     )
   }
-
-  intellisenseCountries(){
-    const search = document.getElementById('searchCountry');
-    const matchList = document.getElementById('match-list-countries');
-    const searchStates = async searchText => {
-      const res = await fetch('../../../assets/js/countries.json');
-      const states = await res.json();
-
-      //Get matches to current text input
-      let matches = states.filter(state => {
-        const regex = new RegExp(`^${searchText}`, 'gi');
-        return state.code.match(regex);
-      });
-      if(searchText.length === 0){
-        matches = [];
-        matchList.innerHTML = '';
-      }
-
-      outputHtml(matches);
+  
+  loadAutoCompleteOptions(controlId, JSONPath){
+    var options = {
+      url: JSONPath,
+    
+      getValue: "name",
+    
+      list: {
+        match: {
+          enabled: true
+        },
+        maxNumberOfElements: 6,
+    
+        showAnimation: {
+          type: "slide",
+          time: 300
+        },
+        hideAnimation: {
+          type: "slide",
+          time: 300
+        }
+      },
+    
+      theme: "round"
+    
     };
-
-    //Show results in HTML 
-    const outputHtml = matches => {
-      if(matches.length > 0){
-        const html = matches.map(match => `
-          <div class="card card-body mb-1">
-            <h5> ${match.name}: <span class="text-primary">${match.code}</span></h5>
-          </div>
-        `).join('');
-
-        matchList.innerHTML = html;
-      }
-    }
-
-    search.addEventListener('input', () => searchStates(search.value));
+    
+    $("#" + controlId).easyAutocomplete(options);
   }
 
-  intellisenseCities(){
-    const search = document.getElementById('searchCity');
-    const matchList = document.getElementById('match-list-cities');
-    const searchStates = async searchText => {
-      const res = await fetch('../../../assets/js/cities.min.json');
-      const states = await res.json();
+  isValidCountry(formData:NgForm){
+    var countryValue = $('#searchCountry').val().toUpperCase();
+    for (var index = 0; index < CountriesJSON.length; ++index) {
+      var animal = CountriesJSON[index];
 
-      //Get matches to current text input
-      let matches = states.filter(state => {
-        const regex = new RegExp(`^${searchText}`, 'gi');
-        return state.name.match(regex);
-      });
-      if(searchText.length === 0){
-        matches = [];
-        matchList.innerHTML = '';
-      }
-
-      outputHtml(matches);
-    };
-
-    //Show results in HTML 
-    const outputHtml = matches => {
-      if(matches.length > 0){
-        const html = matches.map(match => `
-          <div class="card card-body mb-1">
-            <h5> ${match.country}: <span class="text-primary">${match.name}</span></h5>
-          </div>
-        `).join('');
-
-        matchList.innerHTML = html;
+      if(animal.name.toUpperCase() == countryValue){
+        //if value matched with some json value
+        formData.form.controls['Country'].setErrors(null);
+        break;
       }
     }
 
-    search.addEventListener('input', () => searchStates(search.value));
+    if(formData.form.controls['Country'] !== undefined){
+      formData.form.controls['Country'].setErrors({'incorrect': true});
+    }
   }
   
 }

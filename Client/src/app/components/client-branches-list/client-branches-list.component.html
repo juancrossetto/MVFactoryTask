@@ -1,0 +1,7 @@
+<div class="container">
+    <h3 class="h3">Sucursales</h3>
+    <div *ngIf="clientBranches" class="row">
+        <card-item *ngFor="let branch of clientBranches" [idBranch]= "branch.ClientBranchId"  class="col-md-3 col-sm-6"></card-item>
+    </div>
+</div>
+<hr>
