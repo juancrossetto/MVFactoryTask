@@ -79,7 +79,7 @@ export class EditClientBranchComponent implements OnInit {
     onSubmit(){
       this._service.updateClientBranch().subscribe(
         response => {
-          debugger;
+          
           if(response.project){ 
             //Subir la imagen..
             if(this.filesToUpload){
@@ -106,7 +106,7 @@ export class EditClientBranchComponent implements OnInit {
     }
 
     handleFileInput(file: FileList){
-    debugger;
+    
     this.fileToUpload = file.item(0);
 
     //Show image preview

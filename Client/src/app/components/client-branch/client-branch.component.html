@@ -1,6 +1,6 @@
 <div *ngIf="clientBranch">
   <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="{{url + 'get-image/' + clientBranch.iMAGE}}" alt="Imagen Sucursal">
+    <img class="card-img-top" src="_DomSanitizationService.bypassSecurityTrustUrl({{clientBranch.Image}})" alt="Imagen Sucursal">
     <div class="card-body">
       <h5 class="card-title">{{clientBranch.Id}}</h5>
       <p class="card-text">{{clientBranch.Description}}</p>

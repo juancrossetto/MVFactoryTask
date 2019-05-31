@@ -21,8 +21,7 @@ namespace ServerAPI.Models.Mappings
                 .IsRequired();
             builder.Property(c => c.Description).HasColumnName("ClientBranchDescription")
                .HasMaxLength(250);
-            builder.Property(c => c.Description).HasColumnName("Image")
-               .HasMaxLength(250);
+            builder.Property(c => c.Image).HasColumnName("Image");
             //builder.Property(c => c.Latitude).HasColumnName("Latitude")
             //    .HasMaxLength(6)
             //    .IsRequired();

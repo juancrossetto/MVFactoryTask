@@ -45,7 +45,7 @@ export class CreateClientBranchComponent implements OnInit {
   }
 
   handleFileInput(file: FileList){
-    debugger;
+    
     this.fileToUpload = file.item(0);
 
     //Show image preview
@@ -57,6 +57,7 @@ export class CreateClientBranchComponent implements OnInit {
     reader.readAsDataURL(this.fileToUpload);
 
   }
+
   resetForm(form?:NgForm){
     if(form != null)
       form.resetForm();
@@ -121,7 +122,7 @@ export class CreateClientBranchComponent implements OnInit {
     
     this.service.formData.Image = this.imageUrl;
 
-    debugger;
+    
     this.service.saveClientBranch().subscribe(
       res => {
         
