@@ -35,7 +35,6 @@ export class ClientBranchesListComponent implements OnInit {
       response => {
         if(response){
           
-          debugger;
           this.clientBranches = response;
           console.log(this.clientBranches);
         };

@@ -8,12 +8,17 @@ namespace ServerAPI.Models
         /// <summary>
         /// Identificador de la sucursal
         /// </summary>
-        public int ClientBranchID { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Nombre de la Sucursal
         /// </summary>
-        public string ClientBranchName { get; set; }
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Descripcion breve de la Sucursal
+        /// </summary>
+        public string Description { get; set; }
 
         /// <summary>
         /// Nombre de la Ciudad
@@ -25,20 +30,26 @@ namespace ServerAPI.Models
         /// </summary>
         public string Country { get; set; }
 
-        /// <summary>
-        /// Latitud
-        /// </summary>
-        public decimal Latitude { get; set; }
 
         /// <summary>
-        /// Longitud
+        /// Path de la imagen
         /// </summary>
-        public decimal Longitude { get; set; }
+        public string Image { get; set; }
 
-        /// <summary>
-        /// Altitud
-        /// </summary>
-        public decimal Altitude { get; set; }
+        ///// <summary>
+        ///// Latitud
+        ///// </summary>
+        //public decimal Latitude { get; set; }
+
+        ///// <summary>
+        ///// Longitud
+        ///// </summary>
+        //public decimal Longitude { get; set; }
+
+        ///// <summary>
+        ///// Altitud
+        ///// </summary>
+        //public decimal Altitude { get; set; }
 
         /// <summary>
         /// El Tiempo de la sucursal

@@ -13,9 +13,9 @@ const appRoutes: Routes = [
      {path: '', component: AboutComponent},
      {path: 'branches', component: ClientBranchesListComponent},
      {path: 'create-branch', component: CreateClientBranchComponent},
-     {path: 'branch/:id', component: ClientBranchComponent},
-     {path: 'edit-branch/:id', component: EditClientBranchComponent},
-     {path: '**', component: ErrorComponent} /*En caso de error o 404 */
+     {path: 'branch/:id', component: ClientBranchComponent}
+     // {path: 'edit-branch/:id', component: EditClientBranchComponent},
+     // {path: '**', component: ErrorComponent} /*En caso de error o 404 */
 ]
 
 export const AppRoutingProviders: any[] = [];

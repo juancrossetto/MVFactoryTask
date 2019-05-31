@@ -7,7 +7,6 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 @Component({
   selector: 'client-branch',
   templateUrl: './client-branch.component.html',
-  styles: [],
   providers: [ ClientBranchService ]
 })
 export class ClientBranchComponent implements OnInit {
@@ -25,9 +24,12 @@ export class ClientBranchComponent implements OnInit {
 
   ngOnInit() {
     //this.getClientBranches();
+
     this._route.params.subscribe(params => {
+      
+      console.log(params);
       let id = params.id;
-      debugger;
+      
       if(this.idBranch){
         id = this.idBranch;
       }
@@ -38,8 +40,8 @@ export class ClientBranchComponent implements OnInit {
   getClientBranch(id){
     this._clientBranchService.getClientBranch(id).subscribe(  //Subscribe recibe 2 funciones de callback por param.
         response => {
-          debugger;
-          this.clientBranch = response.ClientBranch;
+         debugger;
+          this.clientBranch = response;
         },
         error => {
           console.log(<any>error);

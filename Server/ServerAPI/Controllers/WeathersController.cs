@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -121,7 +122,8 @@ namespace ServerAPI.Controllers
             return tmpDegreesF;
         }
 
-        [HttpGet("[action]/{city}")]
+        //[HttpGet("[action]/{city}")]
+        [HttpGet("GetWeatherByCity")]
         public async Task<IActionResult> GetWeatherByCity(string city)
         {
             using (var client = new HttpClient())
@@ -132,15 +134,30 @@ namespace ServerAPI.Controllers
                     var api_id = appSettings.AppID;
                     client.BaseAddress = new Uri("http://api.openweathermap.org");
                     var response = await client.GetAsync($"/data/2.5/weather?q={city}&appid={api_id}&units=metric");
-                    response.EnsureSuccessStatusCode();
 
+                    if (response.StatusCode == HttpStatusCode.NotFound)
+                        return Ok(new { Error = "La ciudad indicada no es valida" });
+                    
+                    response.EnsureSuccessStatusCode();
+                    
                     var stringResult = await response.Content.ReadAsStringAsync();
                     var rawWeather = JsonConvert.DeserializeObject<OpenWeatherResponse>(stringResult);
                     return Ok(new
                     {
-                        Temp = rawWeather.Main.Temp,
                         Summary = string.Join(",", rawWeather.Weather.Select(x => x.Main)),
-                        City = rawWeather.Name
+                        Id = rawWeather.Id,
+                        Code = rawWeather.Cod,
+                        Country = rawWeather.Sys.Country,
+                        Name = rawWeather.Name, /**/
+                        Temperature = rawWeather.Main.Temp,
+                        Temp_Min = rawWeather.Main.Temp_Min,
+                        Temp_Max = rawWeather.Main.Temp_Max,
+                        Humidity = rawWeather.Main.Humidity,
+                        Pressure = rawWeather.Main.Pressure,
+                        WindDirection = rawWeather.Wind.Deg,
+                        WindSpeed = rawWeather.Wind.Speed,
+                        Latitude = rawWeather.Coord.Lat,
+                        Longitude = rawWeather.Coord.Lon,
                     });
                 }
                 catch (HttpRequestException httpRequestException)

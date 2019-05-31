@@ -52,7 +52,7 @@ namespace ServerAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateClientBranch(int id, ClientBranch clientBranch)
         {
-            if (id != clientBranch.ClientBranchID)
+            if (id != clientBranch.Id)
             {
                 return BadRequest();
             }
@@ -88,17 +88,29 @@ namespace ServerAPI.Controllers
         {
             try
             {
+                if(clientBranch == null)
+                    return StatusCode(StatusCodes.Status204NoContent);
+                else
+                {
+                    if(!string.IsNullOrEmpty(clientBranch.Image))
+                    {
+                        //Get Image from image path
 
-                _context.ClientBranches.Add(clientBranch);
-                await _context.SaveChangesAsync();
+
+                    }
+
+                    _context.ClientBranches.Add(clientBranch);
+                    await _context.SaveChangesAsync();
+                }
             }
             catch (Exception ex )
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
 
-            return CreatedAtAction("GetClientBranch", new { id = clientBranch.ClientBranchID }, clientBranch);
+            return CreatedAtAction("GetClientBranch", new { id = clientBranch.Id }, clientBranch);
         }
+
 
         // DELETE: api/ClientBranches/5
         [HttpDelete("{id}")]
@@ -118,7 +130,7 @@ namespace ServerAPI.Controllers
 
         private bool GetClientBranchByID(int id)
         {
-            return _context.ClientBranches.Any(e => e.ClientBranchID == id);
+            return _context.ClientBranches.Any(e => e.Id == id);
         }
     }
 }

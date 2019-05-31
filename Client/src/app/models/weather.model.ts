@@ -1,19 +1,28 @@
 export class Weather {
 
         // Identificador del Tiempo
-        WeatherID:number;
+        Id:number;
+
+        // Código del Tiempo
+        Code:number;
 
         // Ciudad
         Country:string;
 
-        // Tempartura
-        Temperature:number;
+        // Tempartura Minima
+        Temperature:string;
+
+        // Tempartura Minima
+        Temp_Min:string;
+
+        // Tempartura Maxima
+        Temp_Max:string;
 
         // Humedad
         Humidity:string;
 
         // Nubes
-        Clouds:string;
+        //Clouds:string;
 
         // Presión
         Pressure:string;
@@ -21,6 +30,12 @@ export class Weather {
         // Dirección del Viento
         WindDirection:string;
 
-        /// Dirección del Viento
+        // Dirección del Viento
         WindSpeed:number;
+
+        //Latitud
+        Latitude:string;
+
+        //Longitud
+        Longitude:string;
 }

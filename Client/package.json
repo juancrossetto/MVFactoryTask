@@ -8,12 +8,14 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "fix-memory-limit": "cross-env LIMIT=2048 increase-memory-limit"
+    "serve": "node --max_old_space_size=4096 node_modules/.bin/vue-cli-service serve --open",
+    "fix-memory-limit": "cross-env LIMIT=3072 increase-memory-limit"
+  },
+  "config": {
+    "max_old_space_size": 3072
   },
   "private": true,
   "dependencies": {
-    "increase-memory-limit": "^1.0.3",
-    "cross-env": "^5.0.5",
     "@angular/animations": "~7.2.0",
     "@angular/common": "~7.2.0",
     "@angular/compiler": "~7.2.0",
@@ -22,14 +24,13 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
-    "@fortawesome/fontawesome-free": "^5.8.2",
-    "angular-bootstrap-md": "^7.5.3",
     "bootstrap": "^4.3.1",
     "chart.js": "^2.5.0",
     "core-js": "^2.5.4",
+    "cross-env": "^5.0.5",
     "easy-autocomplete": "^1.3.5",
     "font-awesome": "^4.7.0",
-    "hammerjs": "^2.0.8",
+    "increase-memory-limit": "^1.0.3",
     "ngx-toastr": "^10.0.4",
     "rxjs": "~6.3.3",
     "rxjs-compat": "^6.5.2",

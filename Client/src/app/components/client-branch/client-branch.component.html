@@ -1,18 +1,37 @@
-<div class="row" *ngIf="clientBranch">
+<div *ngIf="clientBranch">
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="{{url + 'get-image/' + clientBranch.iMAGE}}" alt="Imagen Sucursal">
+    <div class="card-body">
+      <h5 class="card-title">{{clientBranch.Id}}</h5>
+      <p class="card-text">{{clientBranch.Description}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{clientBranch.Country}}</li>
+      <li class="list-group-item">{{clientBranch.City}}</li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Revisar Clima</a>
+      <a href="#" class="card-link">Editar</a>
+      <!-- <a href="#" class="card-link">Eliminar</a> -->
+    </div>
+  </div>
+</div>
+
+<!-- <div class="row" *ngIf="clientBranch">
     <div class="col-md-4">
-      <!--Card-->
+      
       <mdb-card cascade="true">
   
-        <!--Card image-->
+        
         <div class="view view-cascade overlay waves-light" mdbWavesEffect>
           <mdb-card-img src="https://image.maps.api.here.com/mia/1.6/mapview?app_id=GKbW51R76GaTBa6bFwL5&app_code=q6k7HAObzmME1LnxgpIQRw"></mdb-card-img>
           <a>
             <div class="mask rgba-white-slight"></div>
           </a>
         </div>
-        <!--/Card image-->
+        
         <mdb-card-body cascade="true" class="text-center">
-          <!--Card content-->
+          
           <h4 class="card-title">
             <strong>{{clientBranch.ClientBranchName}}</strong>
           </h4>
@@ -23,22 +42,22 @@
             aperiam.
           </mdb-card-text>
   
-          <!--Facebook-->
+          
           <a type="button" class="btn-floating btn-small btn-fb waves-light" mdbWavesEffect>
             <i class="fab fa-facebook-f"></i>
           </a>
-          <!--Twitter-->
+          
           <a type="button" class="btn-floating btn-small btn-tw waves-light" mdbWavesEffect>
             <i class="fab fa-twitter"></i>
           </a>
-          <!--Google +-->
+          
           <a type="button" class="btn-floating btn-small btn-dribbble waves-light" mdbWavesEffect>
             <i class="fab fa-dribbble"></i>
           </a>
   
         </mdb-card-body>
-        <!--/.Card content-->
+        
       </mdb-card>
-      <!--/.Card-->
+      
     </div>
-  </div>
+  </div> -->

@@ -3,10 +3,13 @@ import { Weather } from './weather.model';
 export class ClientBranch {
 
     // Identificador de la sucursal
-    ClientBranchID: number;
+    Id: number;
 
     // Nombre de la Sucursal
-    ClientBranchName:string;
+    Name:string;
+
+    //Descripcion de la sucursal
+    Description:string;
 
     // Nombre de la Ciudad
     City: string;
@@ -14,15 +17,19 @@ export class ClientBranch {
     // Nombre del pais
     Country: string;
 
-    // Latitud
-    Latitude: number;
+    // // Latitud
+    // Latitude: number;
 
-    // Longitud
-    Longitude: number;
+    // // Longitud
+    // Longitude: number;
 
-    // Altitud
-    Altitude: number;
+    // // Altitud
+    // Altitude: number;
 
+    //Imagen
+    Image: string;
+
+    
     // Fecha Creación
     CreatedAt:Date;
 

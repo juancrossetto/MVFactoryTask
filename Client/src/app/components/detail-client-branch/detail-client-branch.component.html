@@ -3,14 +3,15 @@
     <img src="{{url + 'get-image/' + clientBranch.image}}"/>
   </div>
   <div class="data">
-    <h1>{{clientBranch.ClientBranchName}}</h1>
+    <h1>{{clientBranch.Name}}</h1>
+    <h1>{{clientBranch.Description}}</h1>
     <h3>{{clientBranch.Country}}</h3>
     <h3>{{clientBranch.City}}</h3>
-    <p>{{clientBranch.Latitude}}</p>
+    <!-- <p>{{clientBranch.Latitude}}</p>
     <p>{{clientBranch.Longitude}}</p>
-    <p>{{clientBranch.Altitude}}</p>
+    <p>{{clientBranch.Altitude}}</p> -->
     <p *ngIf="confirm == false">
-        <a class="button-edit" [routerLink]="['/edit-clientBranch', clientBranch._id]">Editar</a>
+        <a class="button-edit" [routerLink]="['/edit-clientBranch', clientBranch.Id]">Editar</a>
         <a class="button-delete" (click)="setConfirm(true)">Borrar</a>
     </p>
 
@@ -18,7 +19,7 @@
       <span class="confirm">¿Estas seguro de eliminar esta sucursal?</span>
       <br/>
       <a (click)="setConfirm(false)" class="button-edit">Cancelar</a>
-      <a class="button-delete" (click)="deleteClientBranch(clientBranch._id)">Eliminar definitivamente</a>
+      <a class="button-delete" (click)="deleteClientBranch(clientBranch.Id)">Eliminar definitivamente</a>
     </p>
   </div>
 </div>
