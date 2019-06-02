@@ -132,7 +132,7 @@ namespace ServerAPI.Controllers
                 {
                     var api_url = appSettings.OpenWeatherApiUrl;
                     var api_id = appSettings.AppID;
-                    client.BaseAddress = new Uri("http://api.openweathermap.org");
+                    client.BaseAddress = new Uri(api_url);
                     var response = await client.GetAsync($"/data/2.5/weather?q={city}&appid={api_id}&units=metric");
 
                     if (response.StatusCode == HttpStatusCode.NotFound)
@@ -145,7 +145,7 @@ namespace ServerAPI.Controllers
                     return Ok(new
                     {
                         Summary = string.Join(",", rawWeather.Weather.Select(x => x.Main)),
-                        Id = rawWeather.Id,
+                        //Id = rawWeather.Id,
                         Code = rawWeather.Cod,
                         Country = rawWeather.Sys.Country,
                         Name = rawWeather.Name, /**/

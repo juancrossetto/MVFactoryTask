@@ -16,28 +16,21 @@ namespace ServerAPI.Models.Mappings
             builder.Property(c => c.City).HasColumnName("City")
                .HasMaxLength(50)
                .IsRequired();
-            builder.Property(c => c.Name).HasColumnName("ClientBranchName")
-                .HasMaxLength(50)
+            builder.Property(c => c.Address).HasColumnName("Address")
+                .HasMaxLength(70)
                 .IsRequired();
+            builder.Property(c => c.Name).HasColumnName("ClientBranchName")
+              .HasMaxLength(50)
+              .IsRequired();
             builder.Property(c => c.Description).HasColumnName("ClientBranchDescription")
                .HasMaxLength(250);
             builder.Property(c => c.Image).HasColumnName("Image");
-            //builder.Property(c => c.Latitude).HasColumnName("Latitude")
-            //    .HasMaxLength(6)
-            //    .IsRequired();
-            //builder.Property(c => c.Longitude).HasColumnName("Longitude")
-            //     .HasMaxLength(6)
-            //    .IsRequired();
-
-            //builder.Property(c => c.Altitude).HasColumnName("Altitude")
-            //    .HasMaxLength(6)
-            //    .IsRequired();
-
             builder.Property(c => c.UpdatedAt).HasColumnName("UpdatedAt")
                 .IsRequired();
 
             builder.Property(c => c.CreatedAt).HasColumnName("CreatedAt")
                 .IsRequired();
+
         }
     }
 }

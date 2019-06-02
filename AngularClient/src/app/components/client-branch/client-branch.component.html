@@ -1,0 +1,23 @@
+<div *ngIf="clientBranch">
+  <div class="card bg-dark mb-1 text-light" style="width: 18rem;">
+    <div class="card-header bg-secondary  mb-1 font-weight-bold text-uppercase text-center">
+      {{clientBranch.Name}}
+    </div>
+    <img class="card-img-top rounded-circle cardImage" [src]="clientBranch.Image"  
+    style="" alt="Imagen Sucursal">
+    <div class="card-body" style="height: 120px;">
+      <h4 class="card-title">{{clientBranch.Description}}</h4>
+      <p class="card-text" >{{clientBranch.Country}}, {{clientBranch.City}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item bg-dark">{{clientBranch.Address}}</li>
+      <li class="list-group-item bg-dark">Temp: {{clientBranch.Weather.Temp_Max}}º, Hum: {{clientBranch.Weather.Humidity}}º</li>
+      <li class="list-group-item bg-dark">Presión: {{clientBranch.Weather.Pressure}}º</li>
+    </ul>
+    <div class="card-body text-center">
+        <button type="button" class="btn btn-warning" 
+        [routerLink]="['/branch', clientBranch.Id]">Detalle</button>
+    </div>
+  </div>
+</div>
+

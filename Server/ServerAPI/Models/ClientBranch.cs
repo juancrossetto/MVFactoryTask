@@ -21,6 +21,11 @@ namespace ServerAPI.Models
         public string Description { get; set; }
 
         /// <summary>
+        /// Dirección
+        /// </summary>
+        public string Address { get; set; }
+
+        /// <summary>
         /// Nombre de la Ciudad
         /// </summary>
         public string City { get; set; }

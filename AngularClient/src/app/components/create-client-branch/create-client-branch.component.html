@@ -1,0 +1,98 @@
+<div class="createBranchContainer"  *ngIf="_service.formData">
+  <form #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+    <input type="hidden" name="Id" [value]="_service.formData.Id">
+   
+    <div class="form-group ">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text bg-white">
+            <i class="fas fa-user-circle" [class.green-icon]="Name.valid" 
+            [class.red-icon]="Name.invalid && Name.touched"></i>
+          </div>
+        </div>
+        <input type="text" name="Name" #Name="ngModel" 
+        [(ngModel)]="_service.formData.Name" class="form-control" placeholder="Nombre/Razon Social"
+        required maxlength="100" minLength="1"/>
+      </div>
+    </div>
+
+    <div class="form-group ">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text bg-white">
+            <i class="fas fa-user-circle" [class.green-icon]="Description.valid" 
+            [class.red-icon]="Description.invalid && Description.touched"></i>
+          </div>
+        </div>
+        <textarea type="text" name="Description" #Description="ngModel" 
+        [(ngModel)]="_service.formData.Description" class="form-control" placeholder="Descripción"
+         maxlength="250"> </textarea>
+      </div>
+    </div>
+
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text bg-white">
+              <i class="fas fa-user-circle" [class.green-icon]="Country.valid" 
+              [class.red-icon]="Country.invalid && Country.touched"></i>
+            </div>
+          </div>
+          <input type="text" name="Country" #Country="ngModel" id="searchCountry"
+          [(ngModel)]="_service.formData.Country" class="form-control" placeholder="País"
+          required maxlength="30" minLength="1"/>
+        </div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text bg-white">
+              <i class="fas fa-user-circle" [class.green-icon]="City.valid" 
+              [class.red-icon]="City.invalid && City.touched"></i>
+            </div>
+          </div>
+          <input type="text" name="City" #City="ngModel"  id="searchCity" 
+          [(ngModel)]="_service.formData.City" class="form-control" placeholder="Ciudad" 
+          required maxlength="100" minLength="1" 
+          
+          />
+          <span class="form_error" *ngIf="City.touched && !City.valid">
+              La Ciudad es obligatoria es obligatoria
+          </span>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="form-group ">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text bg-white">
+            <i class="fas fa-user-circle" [class.green-icon]="Address.valid" 
+            [class.red-icon]="Address.invalid && Address.touched"></i>
+          </div>
+        </div>
+        <input type="text" name="Address" #Address="ngModel" 
+        [(ngModel)]="_service.formData.Address" class="form-control" placeholder="Dirección"
+        required maxlength="70">
+      </div>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+        <img [src]="this._service.formData.Image"  style="width:250px;height:200px">
+        <input type="file" name="image" accept="image/*" placeholder="Subir imagen" (change)="handleFileInput($event.target.files)" />
+      </div>
+    </div>
+
+    <div class="form-group" style="padding-bottom: 10px;">
+      <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">
+        <i class="fas fa-database"></i> 
+        Crear</button>
+    </div>
+
+  </form>
+</div>

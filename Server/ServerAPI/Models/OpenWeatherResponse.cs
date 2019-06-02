@@ -9,9 +9,9 @@ namespace ServerAPI.Models
     {
         public string Name { get; set; }
 
-        public string Cod { get; set; }
+        public int Cod { get; set; }
 
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Visibility { get; set; }
 
         public IEnumerable<WeatherDescription> Weather { get; set; }
@@ -23,6 +23,13 @@ namespace ServerAPI.Models
         public Wind Wind { get; set; }
 
         public System Sys { get; set; }
+
+        public Cloud Clouds { get; set; }
+    }
+
+    public class Cloud
+    {
+        public string All { get; set; }
     }
 
     public class WeatherDescription
@@ -33,18 +40,18 @@ namespace ServerAPI.Models
 
     public class Main
     {
-        public string Temp { get; set; }
+        public decimal Temp { get; set; }
         public string Pressure { get; set; }
         public string Humidity { get; set; }
-        public string Temp_Min { get; set; }
-        public string Temp_Max { get; set; }
+        public decimal Temp_Min { get; set; }
+        public decimal Temp_Max { get; set; }
     }
 
     public class Coordinates
     {
-        public string Lon { get; set; }
+        public decimal Lon { get; set; }
 
-        public string Lat { get; set; }
+        public decimal Lat { get; set; }
     }
 
     public class System
@@ -54,7 +61,7 @@ namespace ServerAPI.Models
 
     public class Wind
     {
-        public string Speed { get; set; }
+        public decimal Speed { get; set; }
         public string Deg { get; set; }
     }
 }

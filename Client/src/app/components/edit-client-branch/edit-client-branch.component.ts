@@ -20,7 +20,7 @@ export class EditClientBranchComponent implements OnInit {
   public url: string;
   public _service: ClientBranchService;
   public fileToUpload: File = null;
-  public imageUrl: string = "assets/img/imagesBranches/default-image.png";
+  public imageUrl: string = "assets/img/default-image.png";
 
   constructor(public service: ClientBranchService,
               public _uploadService: UploadService,

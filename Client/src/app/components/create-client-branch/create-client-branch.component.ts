@@ -28,7 +28,7 @@ export class CreateClientBranchComponent implements OnInit {
   public save_ClientBranch;
   public status:string;
   public _service: ClientBranchService;
-  public imageUrl: string = "assets/img/imagesBranches/default-image.png";
+  public imageUrl: string = "assets/img/default-image.png";
 
   constructor(public service: ClientBranchService,
               private weatherService: WeatherService,
@@ -51,6 +51,7 @@ export class CreateClientBranchComponent implements OnInit {
     //Show image preview
     var reader = new FileReader();
     reader.onload = (event:any) => {
+      debugger;
       // this._service.formData.Image = event.target.result;
       this.imageUrl = event.target.result;
     }

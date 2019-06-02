@@ -26,3 +26,17 @@ C:\Users\juanv\Desktop\MV Factory\MVFactoryTask\Server\ServerAPI\obj\Debug\netco
 C:\Users\juanv\Desktop\MV Factory\MVFactoryTask\Server\ServerAPI\obj\Debug\netcoreapp2.2\ServerAPI.RazorTargetAssemblyInfo.cache
 C:\Users\juanv\Desktop\MV Factory\MVFactoryTask\Server\ServerAPI\obj\Debug\netcoreapp2.2\ServerAPI.dll
 C:\Users\juanv\Desktop\MV Factory\MVFactoryTask\Server\ServerAPI\obj\Debug\netcoreapp2.2\ServerAPI.pdb
+C:\Users\DELL\Desktop\Proyecto MV Factory\MVFactoryTask\Server\ServerAPI\bin\Debug\netcoreapp2.2\ServerAPI.deps.json
+C:\Users\DELL\Desktop\Proyecto MV Factory\MVFactoryTask\Server\ServerAPI\bin\Debug\netcoreapp2.2\ServerAPI.runtimeconfig.json
+C:\Users\DELL\Desktop\Proyecto MV Factory\MVFactoryTask\Server\ServerAPI\bin\Debug\netcoreapp2.2\ServerAPI.runtimeconfig.dev.json
+C:\Users\DELL\Desktop\Proyecto MV Factory\MVFactoryTask\Server\ServerAPI\bin\Debug\netcoreapp2.2\ServerAPI.dll
+C:\Users\DELL\Desktop\Proyecto MV Factory\MVFactoryTask\Server\ServerAPI\bin\Debug\netcoreapp2.2\ServerAPI.pdb
+C:\Users\DELL\Desktop\Proyecto MV Factory\MVFactoryTask\Server\ServerAPI\obj\Debug\netcoreapp2.2\ServerAPI.csprojAssemblyReference.cache
+C:\Users\DELL\Desktop\Proyecto MV Factory\MVFactoryTask\Server\ServerAPI\obj\Debug\netcoreapp2.2\ServerAPI.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Desktop\Proyecto MV Factory\MVFactoryTask\Server\ServerAPI\obj\Debug\netcoreapp2.2\ServerAPI.RazorAssemblyInfo.cache
+C:\Users\DELL\Desktop\Proyecto MV Factory\MVFactoryTask\Server\ServerAPI\obj\Debug\netcoreapp2.2\ServerAPI.RazorAssemblyInfo.cs
+C:\Users\DELL\Desktop\Proyecto MV Factory\MVFactoryTask\Server\ServerAPI\obj\Debug\netcoreapp2.2\ServerAPI.AssemblyInfoInputs.cache
+C:\Users\DELL\Desktop\Proyecto MV Factory\MVFactoryTask\Server\ServerAPI\obj\Debug\netcoreapp2.2\ServerAPI.AssemblyInfo.cs
+C:\Users\DELL\Desktop\Proyecto MV Factory\MVFactoryTask\Server\ServerAPI\obj\Debug\netcoreapp2.2\ServerAPI.RazorTargetAssemblyInfo.cache
+C:\Users\DELL\Desktop\Proyecto MV Factory\MVFactoryTask\Server\ServerAPI\obj\Debug\netcoreapp2.2\ServerAPI.dll
+C:\Users\DELL\Desktop\Proyecto MV Factory\MVFactoryTask\Server\ServerAPI\obj\Debug\netcoreapp2.2\ServerAPI.pdb

@@ -1,0 +1,21 @@
+<div class="container" *ngIf="clientBranches || clientBranches.length > 0; else withoutClientBranches">
+    <h3 class="h3 font-weight-bold">Sucursales</h3>
+    <div *ngIf="clientBranches" class="row">
+        <client-branch *ngFor="let branch of clientBranches" 
+        [idBranch]= "branch.Id"  class="col-md-4 col-sm-6" style="margin-bottom: 10px;"></client-branch>
+    </div>
+    <!-- <ul>
+        <li *ngFor="let branch of clientBranches" class="clientBranch">
+          <a [routerLink]="['/branch',branch.Id]">
+    
+            <h2>{{branch.Name}}</h2>
+            <p>{{branch.Country}}</p>
+            <p>{{branch.City}}</p>
+          </a>
+        </li>
+    </ul> -->
+</div>
+<ng-template #withoutClientBranches>
+    <h3 class="h3 font-weight-bold text-center">Sin sucursales creadas</h3>
+  </ng-template>
+<hr>
