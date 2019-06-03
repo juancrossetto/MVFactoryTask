@@ -39,7 +39,8 @@ namespace ServerAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ClientBranch>> GetClientBranch(int id)
         {
-            var clientBranch = await _context.ClientBranches.Where(b => b.Id == id).Include(b => b.Weather).FirstOrDefaultAsync();
+            var clientBranch = await _context.ClientBranches.Where(b => b.Id == id)
+                                        .Include(b => b.Weather).FirstOrDefaultAsync();
             
             if (clientBranch == null)
             {
@@ -47,6 +48,20 @@ namespace ServerAPI.Controllers
             }
 
             return clientBranch;
+        }
+
+        [HttpGet("GetClientBranchesByName")]
+        public async Task<ActionResult<IEnumerable<ClientBranch>>> GetClientBranchesByName(string name)
+        {
+            var clientBranches = await _context.ClientBranches.Where(b => b.Name.ToUpper().Contains(name))
+                                           .Include(b => b.Weather).ToListAsync();
+
+            if (clientBranches == null)
+            {
+                return NotFound();
+            }
+
+            return clientBranches;
         }
 
         // PUT: api/ClientBranches/5

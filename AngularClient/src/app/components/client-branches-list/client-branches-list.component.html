@@ -1,4 +1,4 @@
-<div class="container" *ngIf="clientBranches || clientBranches.length > 0; else withoutClientBranches">
+<div class="container" *ngIf="clientBranches && clientBranches.length > 0; else withoutClientBranches">
     <h3 class="h3 font-weight-bold">Sucursales</h3>
     <div *ngIf="clientBranches" class="row">
         <client-branch *ngFor="let branch of clientBranches" 

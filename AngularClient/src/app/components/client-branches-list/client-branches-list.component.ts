@@ -27,6 +27,7 @@ export class ClientBranchesListComponent implements OnInit {
     //   let id = params.id;
     //   this.getClientBranches();
     // })
+    // this.getClientBranchesByName('Inw');
     this.getClientBranches();
   }
 
@@ -41,6 +42,20 @@ export class ClientBranchesListComponent implements OnInit {
       error => {
         console.log(<any>error);
       }
+    )
+  }
+
+  getClientBranchesByName(name: string){
+    
+    this._clientBranchService.getClientBranchesByName(name).subscribe(  //Subscribe recibe 2 funciones de callback por param.
+        response => {
+
+          this.clientBranches = response;
+        },
+        error => {
+          
+          console.log(<any>error);
+        }
     )
   }
 

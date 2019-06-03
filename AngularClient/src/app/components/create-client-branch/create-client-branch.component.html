@@ -83,7 +83,7 @@
 
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-        <img [src]="this._service.formData.Image"  style="width:250px;height:200px">
+        <img class="imageNewBranch" [src]="this._service.formData.Image">
         <input type="file" name="image" accept="image/*" placeholder="Subir imagen" (change)="handleFileInput($event.target.files)" />
       </div>
     </div>

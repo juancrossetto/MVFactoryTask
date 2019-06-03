@@ -220,4 +220,21 @@ input.ng-valid{
     height:200px;
     border: 1px solid white;
     margin: 0 auto;
+    background-color: white;
+}
+
+.detailImage {
+    width: 250px;
+    height: 200px;
+    border-radius: 28px;
+    border: 1px solid white;
+    background-color: lightgrey;
+}
+
+.imageNewBranch{
+    width:250px;
+    height: 220px;
+    border: 2px solid black;
+    border-radius: 13%;
+    background-color: white;
 }

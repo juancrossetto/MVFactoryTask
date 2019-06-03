@@ -1,34 +1,52 @@
 <div class="container" *ngIf="clientBranch">
+  <h4 class="font-weight-bold">Datos principales de la sucursal</h4>
   <div class="form-row">
-    <div class="form-group col-md-6"> 
+    <div class="form-group col-md-3"> 
       <div class="image" *ngIf="clientBranch.Image">
-        <img src="{{clientBranch.Image}}"/>
+        <img class="detailImage" src="{{clientBranch.Image}}"/>
       </div>
     </div>
 
-    <div class="form-group col-md-6"> 
-      <div class="data">
-        <h1>Nombre: {{clientBranch.Name}}</h1>
-        <h2>Nombre: {{clientBranch.Description}}</h2>
-        <h3>Pais: {{clientBranch.Country}}</h3>
-        <h3>Ciudad: {{clientBranch.City}}</h3>
-        <h3>Nombre: {{clientBranch.Address}}</h3>
-        <p *ngIf="confirm == false">
-            <!-- <a class="button-edit" [routerLink]="['/edit-branch', clientBranch.Id]">Editar</a> -->
+    <div class="form-group col-md-3"> 
+      <div class="data font-weight-bold">
+        <p>Nombre: {{clientBranch.Name}}</p>
+        <p>Descripción: {{clientBranch.Description}}</p>
+        <p>Pais: {{clientBranch.Country}}</p>
+        <p>Ciudad: {{clientBranch.City}}</p>
+        <p>Dirección: {{clientBranch.Address}}</p>
+        <!-- <p *ngIf="confirm == false">
             <button type="button" class="btn btn-info" [routerLink]="['/edit-branch', clientBranch.Id]"> Editar</button>
-            <!-- <a class="button-delete" (click)="setConfirm(true)">Borrar</a> -->
             <button type="button" class="btn btn-danger" (click)="setConfirm(true)">Borrar</button>
         </p>
 
         <p *ngIf="confirm == true">
           <span class="confirm">¿Estas seguro de eliminar esta sucursal?</span>
           <br/>
-          <!-- <a (click)="setConfirm(false)" class="button-edit">Cancelar</a> -->
           <button type="button" (click)="deleteClientBranch(clientBranch.Id)" class="btn btn-dark">Cancelar</button>
-          <!-- <a class="button-delete" (click)="deleteClientBranch(clientBranch.Id)">Eliminar definitivamente</a> -->
           <button type="button" (click)="deleteClientBranch(clientBranch.Id)" class="btn btn-danger">Eliminar definitivamente</button>
-        </p>
+        </p> -->
       </div>
     </div>
+  </div>
+
+  <hr/>
+  <div class="form-row">
+    <h4 class="font-weight-bold">Datos del tiempo de la sucursal</h4>
+    <div class="form-group col-md-3"></div>
+
+  </div>
+
+  <div style="float: right;">
+    <p *ngIf="confirm == false">
+        <button type="button" class="btn btn-info" style="margin-right: 10px;" [routerLink]="['/edit-branch', clientBranch.Id]"> Editar</button>
+        <button type="button" class="btn btn-danger" (click)="setConfirm(true)">Borrar</button>
+    </p>
+
+    <p *ngIf="confirm == true">
+      <span class="confirm">¿Estas seguro de eliminar esta sucursal?</span>
+      <br/>
+      <button type="button" (click)="setConfirm(false)" class="btn btn-dark">Cancelar</button>
+      <button type="button" (click)="deleteClientBranch(clientBranch.Id)" class="btn btn-danger">Eliminar definitivamente</button>
+    </p>
   </div>
 </div>

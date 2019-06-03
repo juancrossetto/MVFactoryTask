@@ -28,8 +28,7 @@ export class ClientBranchService {
   }
 
   deleteClientBranch(id) : Observable<any>{
-    let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.delete(this.url + '/' + this.controllerName +'/'+ id, {headers:headers});
+    return this.http.delete(this.url + '/' + this.controllerName +'/'+ id);
   }
 
   getClientBranches(): Observable<any> {
@@ -42,10 +41,8 @@ export class ClientBranchService {
       return this.http.get(this.url + '/' + this.controllerName +'/' + id);
   }
 
-  refreshList(){
-    
-    this.http.get(this.url + '/ClientBranches')
-    .toPromise()
-    .then(res => this.list = res as ClientBranch[]);
+  getClientBranchesByName(name): Observable<any> {
+
+    return this.http.get(this.url + "/" + this.controllerName +'/GetClientBranchesByName/' + name);
   }
 }

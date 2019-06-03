@@ -80,7 +80,6 @@ export class CreateClientBranchComponent implements OnInit {
         
         this.resetForm(form);
         this.toastr.success('Submit Successfully', 'Client Branch Register');
-        this._service.refreshList();
       },
       err => {
         

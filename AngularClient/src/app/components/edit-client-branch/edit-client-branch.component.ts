@@ -67,7 +67,6 @@ export class EditClientBranchComponent implements OnInit {
         // this.resetForm(form);
         this.toastr.success('Submit Successfully', 'Client Branch Register');
         this._router.navigate(['/branches']);
-        // this._service.refreshList();
       },
       err => {
         
