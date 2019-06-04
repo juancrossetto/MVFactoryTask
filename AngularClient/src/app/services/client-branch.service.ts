@@ -42,7 +42,8 @@ export class ClientBranchService {
   }
 
   getClientBranchesByName(name): Observable<any> {
-
-    return this.http.get(this.url + "/" + this.controllerName +'/GetClientBranchesByName/' + name);
+    if(name === 'undefined' || name == null)
+      name = '';
+    return this.http.get(this.url + "/" + this.controllerName +'/GetClientBranchesByName/?name=' + name);
   }
 }

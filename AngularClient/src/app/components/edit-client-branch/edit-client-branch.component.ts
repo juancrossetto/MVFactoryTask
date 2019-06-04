@@ -16,7 +16,6 @@ declare var $: any;
 })
 export class EditClientBranchComponent implements OnInit {
   public title:string;
-  // public clientBranch: ClientBranch;
   public status:string;
   public filesToUpload: Array<File>;
   public save_clientBranch;
@@ -63,8 +62,7 @@ export class EditClientBranchComponent implements OnInit {
   onSubmit(form:NgForm){
     this._service.updateClientBranch().subscribe(
       res => {
-        
-        // this.resetForm(form);
+        debugger;
         this.toastr.success('Submit Successfully', 'Client Branch Register');
         this._router.navigate(['/branches']);
       },
@@ -89,7 +87,7 @@ export class EditClientBranchComponent implements OnInit {
       Country: '',
       CreatedAt: new Date(),
       UpdatedAt: new Date(),
-      Weather: new Weather()
+      Weather: null
     }
   }
 

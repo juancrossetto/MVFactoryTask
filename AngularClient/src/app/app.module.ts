@@ -1,7 +1,7 @@
 /*Modules*/
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrModule } from "ngx-toastr";
@@ -10,7 +10,7 @@ import { ToastrModule } from "ngx-toastr";
 /*Services*/
 import { Routing, AppRoutingProviders } from './app.routing';
 import { ClientBranchService } from './services/client-branch.service';
-import { WeatherService } from './services/weather.service';
+// import { WeatherService } from './services/weather.service';
 import { UploadService } from './services/upload.service';
 
 /*Components*/
@@ -23,6 +23,10 @@ import { EditClientBranchComponent } from './components/edit-client-branch/edit-
 import { ClientBranchComponent } from './components/client-branch/client-branch.component';
 import { ClientBranchesListComponent } from './components/client-branches-list/client-branches-list.component';
 
+import { ForecastComponent } from './components/forecast/forecast.component';
+import { ResolveLocationService } from './services/resolve-location.service';
+import { WeatherService } from './services/weather.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,11 +36,13 @@ import { ClientBranchesListComponent } from './components/client-branches-list/c
     DetailClientBranchComponent,
     EditClientBranchComponent,
     ClientBranchComponent,
-    ClientBranchesListComponent
+    ClientBranchesListComponent,
+    ForecastComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     Routing,
@@ -46,7 +52,11 @@ import { ClientBranchesListComponent } from './components/client-branches-list/c
   providers: [ ClientBranchService,
     WeatherService,
     UploadService,
-    AppRoutingProviders],
+    AppRoutingProviders,
+  
+    ResolveLocationService
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

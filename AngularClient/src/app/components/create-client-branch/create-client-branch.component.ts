@@ -69,7 +69,7 @@ export class CreateClientBranchComponent implements OnInit {
       Country: '',
       CreatedAt: new Date(),
       UpdatedAt: new Date(),
-      Weather: new Weather()
+      Weather: null//new Weather()
     }
   }
   
@@ -141,17 +141,17 @@ export class CreateClientBranchComponent implements OnInit {
     }
   }
 
-  getWeatherByCity(city:string){
-    this.weatherService.getWeatherByCity(city).subscribe(  
-      response => {
+  // getWeatherByCity(city:string){
+  //   this.weatherService.getWeatherByCity(city).subscribe(  
+  //     response => {
        
-        this.weather = response;
-      },
-      error => {
+  //       this.weather = response;
+  //     },
+  //     error => {
         
-        console.log(<any>error);
-      }
-  )
-  }
+  //       console.log(<any>error);
+  //     }
+  // )
+  // }
   
 }

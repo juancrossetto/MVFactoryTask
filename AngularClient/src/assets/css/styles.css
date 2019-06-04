@@ -238,3 +238,10 @@ input.ng-valid{
     border-radius: 13%;
     background-color: white;
 }
+
+.forecastCard {
+    width: 18rem;
+    margin-left: 22px;
+    font-size: 14px;
+    border-radius: 15px;
+}

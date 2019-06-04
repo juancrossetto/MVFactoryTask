@@ -3,6 +3,7 @@ import { ClientBranch } from '../../models/client-branch.model';
 import { ClientBranchService } from '../../services/client-branch.service';
 import { Global } from '../../services/global';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+declare var $: any;
 
 @Component({
   selector: 'app-client-branches-list',
@@ -23,11 +24,6 @@ export class ClientBranchesListComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this._route.params.subscribe(params => {
-    //   let id = params.id;
-    //   this.getClientBranches();
-    // })
-    // this.getClientBranchesByName('Inw');
     this.getClientBranches();
   }
 
@@ -47,7 +43,7 @@ export class ClientBranchesListComponent implements OnInit {
 
   getClientBranchesByName(name: string){
     
-    this._clientBranchService.getClientBranchesByName(name).subscribe(  //Subscribe recibe 2 funciones de callback por param.
+    this._clientBranchService.getClientBranchesByName(name).subscribe( 
         response => {
 
           this.clientBranches = response;

@@ -53,8 +53,17 @@ namespace ServerAPI.Controllers
         [HttpGet("GetClientBranchesByName")]
         public async Task<ActionResult<IEnumerable<ClientBranch>>> GetClientBranchesByName(string name)
         {
-            var clientBranches = await _context.ClientBranches.Where(b => b.Name.ToUpper().Contains(name))
+            ActionResult<IEnumerable<ClientBranch>> clientBranches;
+            if (string.IsNullOrEmpty(name))
+            {
+                clientBranches = await _context.ClientBranches.Include(b => b.Weather).ToListAsync();
+            }
+            else
+            {
+                clientBranches = await _context.ClientBranches.Where(b => b.Name.ToUpper().Contains(name))
                                            .Include(b => b.Weather).ToListAsync();
+            }
+            
 
             if (clientBranches == null)
             {

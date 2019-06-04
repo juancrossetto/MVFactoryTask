@@ -9,6 +9,8 @@ import { CreateClientBranchComponent } from './components/create-client-branch/c
 import { DetailClientBranchComponent } from './components/detail-client-branch/detail-client-branch.component';
 import { EditClientBranchComponent } from './components/edit-client-branch/edit-client-branch.component';
 
+import { ForecastComponent } from './components/forecast/forecast.component';
+
 const appRoutes: Routes = [
      {path: '', component: AboutComponent},
      {path: 'branches', component: ClientBranchesListComponent},
@@ -16,6 +18,7 @@ const appRoutes: Routes = [
      {path: 'branch/:id', component: DetailClientBranchComponent},
     //  {path: 'branch/:id', component: ClientBranchComponent},
      {path: 'edit-branch/:id', component: EditClientBranchComponent},
+     {path: 'forecast/:cityName', component: ForecastComponent},
      {path: '**', component: ErrorComponent} /*En caso de error o 404 */
 ]
 
