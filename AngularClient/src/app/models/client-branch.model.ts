@@ -20,18 +20,8 @@ export class ClientBranch {
     // Nombre del pais
     Country: string;
 
-    // // Latitud
-    // Latitude: number;
-
-    // // Longitud
-    // Longitude: number;
-
-    // // Altitud
-    // Altitude: number;
-
     //Imagen
     Image: string;
-
     
     // Fecha Creación
     CreatedAt:Date;

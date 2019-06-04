@@ -41,21 +41,6 @@ namespace ServerAPI.Models
         /// </summary>
         public string Image { get; set; }
 
-        ///// <summary>
-        ///// Latitud
-        ///// </summary>
-        //public decimal Latitude { get; set; }
-
-        ///// <summary>
-        ///// Longitud
-        ///// </summary>
-        //public decimal Longitude { get; set; }
-
-        ///// <summary>
-        ///// Altitud
-        ///// </summary>
-        //public decimal Altitude { get; set; }
-
         /// <summary>
         /// El Tiempo de la sucursal
         /// </summary>

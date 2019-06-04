@@ -1,3 +1,4 @@
+<div class="loading" *ngIf="loading"></div>
 <div class="container" *ngIf="clientBranch">
   <h3 class="font-weight-bold badge badge-secondary" style="font-size: larger">Datos principales de la sucursal</h3>
   <div class="form-row">
@@ -40,8 +41,8 @@
 
     <div class="form-group col-md-6"> 
       <div class="data font-weight-bold">
-        <p>Temp. Minima: <span class="font-weight-normal"> {{clientBranch.Weather.Temp_Min}} Cº</span></p>
-        <p>Latitud: <span class="font-weight-normal"> Geo coords [Lat: {{clientBranch.Weather.Latitude}},
+        <p>Temp. Máxima: <span class="font-weight-normal"> {{clientBranch.Weather.Temp_Max}} Cº</span></p>
+        <p>Geo coords: <span class="font-weight-normal"> [Lat: {{clientBranch.Weather.Latitude}},
           Long: {{clientBranch.Weather.Longitude}}]</span></p>
         <p>Nubes: <span class="font-weight-normal"> {{clientBranch.Weather.Clouds ? clientBranch.Weather.Clouds : 0}} %</span></p>
       </div>
@@ -59,10 +60,10 @@
       </p>
 
       <p *ngIf="confirm == true">
-        <span class="confirm">¿Estas seguro de eliminar esta sucursal?</span>
+        <span class="confirm" style="font-weight: bold;">¿Estas seguro de eliminar esta sucursal?</span>
         <br/>
         <button type="button" (click)="setConfirm(false)" class="btn btn-dark">Cancelar</button>
-        <button type="button" (click)="deleteClientBranch(clientBranch.Id)" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Eliminar definitivamente</button>
+        <button type="button" (click)="deleteClientBranch(clientBranch.Id)" class="btn btn-danger" style="margin-left: 8px;"><i class="fas fa-trash-alt"></i> Eliminar definitivamente</button>
       </p>
     </div>
   </div>

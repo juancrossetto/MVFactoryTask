@@ -16,12 +16,11 @@ declare var $: any;
 })
 export class EditClientBranchComponent implements OnInit {
   public title:string;
-  public status:string;
-  public filesToUpload: Array<File>;
-  public save_clientBranch;
   public url: string;
   public _service: ClientBranchService;
   public fileToUpload: File = null;
+  public defaultImageValue: string =  '/assets/img/default-image.png';
+  public loading: boolean;
 
   constructor(public service: ClientBranchService,
               private _route: ActivatedRoute,
@@ -48,7 +47,7 @@ export class EditClientBranchComponent implements OnInit {
     this._service.getClientBranch(id).subscribe(  //Subscribe recibe 2 funciones de callback por param.
         response => {
           if(!response.Image)
-            response.Image = "assets/img/default-image.png";
+            response.Image = this.defaultImageValue;
           else
             response.Image = 'data:image/jpeg;base64,' + response.Image;
 
@@ -60,15 +59,16 @@ export class EditClientBranchComponent implements OnInit {
     );
   }
   onSubmit(form:NgForm){
+    this.loading = true;
     this._service.updateClientBranch().subscribe(
       res => {
-        debugger;
-        this.toastr.success('Submit Successfully', 'Client Branch Register');
+        this.loading = false;
+        this.toastr.success('Edición exitosa', 'Sucursal editada');
         this._router.navigate(['/branches']);
       },
       err => {
-        
-        console.log(err);
+        this.loading = false;
+        this.toastr.error(err);
       }
     );
   }
@@ -82,7 +82,7 @@ export class EditClientBranchComponent implements OnInit {
       Name: '',
       Description: '',
       Address: '',
-      Image: '/assets/img/default-image.png',
+      Image: this.defaultImageValue,
       City: '',
       Country: '',
       CreatedAt: new Date(),

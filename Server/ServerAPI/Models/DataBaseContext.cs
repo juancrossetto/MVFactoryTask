@@ -21,17 +21,6 @@ namespace ServerAPI.Models
             modelBuilder.Entity<ClientBranch>()
                         .HasOne(c => c.Weather);
 
-            //modelBuilder.Entity<ClientBranch>()
-            // .HasOne(a => a.Weather)
-            // .WithOne(b => b.ClientBranch)
-            // .HasForeignKey<Weather>(b => b.WeatherID);
-
-            //modelBuilder.Entity<ClientBranch>()
-            //    .HasOne(a => a.Weather).WithOne(b => b.ClientBranch)
-            //    .HasForeignKey<Weather>(e => e.WeatherID);
-            //modelBuilder.Entity<ClientBranch>().ToTable("ClientBranch");
-            //modelBuilder.Entity<Weather>().ToTable("Weather");
-
             //Initialize All mappings
             modelBuilder.ApplyConfiguration(new ClientBranchMapping());
             modelBuilder.ApplyConfiguration(new WeatherMapping());

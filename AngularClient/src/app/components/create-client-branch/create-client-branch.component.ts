@@ -3,12 +3,10 @@ import { ClientBranchService } from 'src/app/services/client-branch.service';
 import { NgForm, FormsModule } from '@angular/forms';
 import { Weather } from 'src/app/models/weather.model';
 import { ToastrService } from 'ngx-toastr';
-// import * as $ from 'jquery';
-// import CitiesJSON from '../../../../assets/js/cities.min.json';
-// import CountriesJSON from '../../../../assets/js/countries.json';
 import { WeatherService } from 'src/app/services/weather.service.js';
 import { ClientBranch } from 'src/app/models/client-branch.model.js';
-import { Global } from 'src/app/services/global.js';
+import {HttpErrorResponse } from '@angular/common/http';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 
 declare var $: any;
 
@@ -22,15 +20,14 @@ declare var $: any;
 export class CreateClientBranchComponent implements OnInit {
   public clientBranch: ClientBranch;
   public weather: Weather;
-  public filesToUpload: Array<File>;
   public fileToUpload: File = null;
-  public save_ClientBranch;
-  public status:string;
   public _service: ClientBranchService;
-
+  public defaultImageValue: string =  '/assets/img/default-image.png';
+  public loading: boolean;
   constructor(public service: ClientBranchService,
               private weatherService: WeatherService,
-              private toastr: ToastrService) { 
+              private toastr: ToastrService,
+              private _router : Router) { 
 
       this._service = service;
     }
@@ -39,6 +36,7 @@ export class CreateClientBranchComponent implements OnInit {
     this.resetForm();
     this.loadAutoCompleteOptions('searchCountry', "../../../../assets/js/countries.json");
     this.loadAutoCompleteOptions('searchCity', "../../../../assets/js/cities.min.json");
+    
   }
 
   handleFileInput(file: FileList){
@@ -64,26 +62,31 @@ export class CreateClientBranchComponent implements OnInit {
       Name: '',
       Description: '',
       Address: '',
-      Image: '/assets/img/default-image.png',
+      Image: this.defaultImageValue,
       City: '',
       Country: '',
       CreatedAt: new Date(),
       UpdatedAt: new Date(),
-      Weather: null//new Weather()
+      Weather: null
     }
   }
   
   onSubmit(form){
+    this.loading = true;
+    if(this._service.formData.Image == this.defaultImageValue)
+      this._service.formData.Image = null;
 
     this._service.saveClientBranch().subscribe(
       res => {
-        
-        this.resetForm(form);
-        this.toastr.success('Submit Successfully', 'Client Branch Register');
+        this.loading = false;
+        // this.resetForm(form);
+        this._router.navigate(['/branches']);
+        this.toastr.success('Creación exitosa', 'Sucursal registrada');
       },
-      err => {
-        
-        console.log(err);
+      (error) => {
+        debugger;
+        this.loading = false;
+        this.toastr.error(error);
       }
     )
     
@@ -114,11 +117,11 @@ export class CreateClientBranchComponent implements OnInit {
       theme: "round"
     
     };
-    
     $("#" + controlId).easyAutocomplete(options);
   }
 
   isValidCountry(formData:NgForm){
+    
     var countryValue = $('#searchCountry').val().toUpperCase();
     var xhReq = new XMLHttpRequest();
     xhReq.open("GET", '../../../../assets/js/countries.json', false);

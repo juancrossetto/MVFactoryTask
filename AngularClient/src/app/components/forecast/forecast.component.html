@@ -1,32 +1,41 @@
-<div *ngIf="forecast && forecast.length > 0" class="container" style="margin-top: -30px;">
-  <div class="h3 font-weight-bold text-center" style="font-family:finger;">
-    <h3>Clima extendido</h3>
-    <h3>{{cityName}} </h3>
+<div class="container" style="margin-top: -30px;">
+  <div *ngIf="forecast && forecast.length > 0 ; else withoutForecast">
+    <div class="h3 font-weight-bold text-center" style="font-family:finger;">
+      <h3>Clima extendido</h3>
+      <h3>{{cityName}} </h3>
+    </div>
+    <div class="form-row" style="padding-bottom: 30px;">
+        <div class="card form-group col-md-2 text-center bg-dark mb-1 text-light forecastCard"
+          *ngFor="let dayWeather of forecast">
+          <div class="card-header font-weight-bold text-uppercase">
+              {{dayWeather.date | date: 'MMMM d'}}
+          </div>
+          <img class="card-img-top" style="height: 115px;" src="http://openweathermap.org/img/w/{{dayWeather.img}}.png" 
+          alt="El tiempo">
+          <div class="card-body">
+            <h5 class="card-title">{{ dayWeather.date | date :'EEEE'}}</h5>
+            <h6 class="card-text">Temp. {{dayWeather.temp}} Cº</h6>
+            <p class="card-text">Hum. {{dayWeather.humidity}} %</p>
+            <p class="card-text">Pres. {{dayWeather.pressure}} hPa</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item bg-dark">{{dayWeather.description}}</li>
+            <li class="list-group-item bg-dark">Temp Min {{dayWeather.temp_min}} Cº</li>
+            <li class="list-group-item bg-dark">Temp Max {{dayWeather.temp_max}} Cº</li>
+          </ul>
+        </div>
+    </div>
   </div>
-  <div class="form-row" style="padding-bottom: 30px;">
-      <div class="card form-group col-md-2 text-center bg-dark mb-1 text-light forecastCard"
-        *ngFor="let dayWeather of forecast">
-        <div class="card-header font-weight-bold text-uppercase">
-            {{dayWeather.date | date: 'MMMM d'}}
-        </div>
-        <img class="card-img-top" style="height: 115px;" src="http://openweathermap.org/img/w/{{dayWeather.img}}.png" 
-        alt="El tiempo">
-        <div class="card-body">
-          <h5 class="card-title">{{ dayWeather.date | date :'EEEE'}}</h5>
-          <h6 class="card-text">Temp. {{dayWeather.temp}} Cº</h6>
-          <p class="card-text">Hum. {{dayWeather.humidity}} %</p>
-          <p class="card-text">Pres. {{dayWeather.pressure}} hPa</p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item bg-dark">{{dayWeather.description}}</li>
-          <li class="list-group-item bg-dark">Temp Min {{dayWeather.temp_min}} Cº</li>
-          <li class="list-group-item bg-dark">Temp Max {{dayWeather.temp_max}} Cº</li>
-        </ul>
-        <!-- <div class="card-body">
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
-        </div> -->
-      </div>
+  <ng-template #withoutForecast>
+      <h3 class="h3 font-weight-bold text-center">Pronostico extendido no disponible</h3>
+  </ng-template>
+
+  <div class="form-row">
+    <div class="form-group col-md-9"></div>
+    <div class="form-group col-md-3"> 
+        <a  href="javascript:history.back()"><button type="button" class="btn btn-success" style="margin-right: 10px;" data-toggle="tooltip"><i class="fas fa-cloud-sun"></i> Volver</button></a>
+        <button type="button" class="btn btn-info" style="margin-right: 10px;" [routerLink]="['/about']" data-toggle="tooltip"><i class="fas fa-edit"></i> Menu Principal</button>
+    </div>
   </div>
 </div>
 

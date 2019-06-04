@@ -10,8 +10,9 @@ import { ToastrModule } from "ngx-toastr";
 /*Services*/
 import { Routing, AppRoutingProviders } from './app.routing';
 import { ClientBranchService } from './services/client-branch.service';
-// import { WeatherService } from './services/weather.service';
 import { UploadService } from './services/upload.service';
+import { ResolveLocationService } from './services/resolve-location.service';
+import { WeatherService } from './services/weather.service';
 
 /*Components*/
 import { AppComponent } from './app.component';
@@ -22,10 +23,8 @@ import { DetailClientBranchComponent } from './components/detail-client-branch/d
 import { EditClientBranchComponent } from './components/edit-client-branch/edit-client-branch.component';
 import { ClientBranchComponent } from './components/client-branch/client-branch.component';
 import { ClientBranchesListComponent } from './components/client-branches-list/client-branches-list.component';
-
 import { ForecastComponent } from './components/forecast/forecast.component';
-import { ResolveLocationService } from './services/resolve-location.service';
-import { WeatherService } from './services/weather.service';
+
 
 @NgModule({
   declarations: [
@@ -48,12 +47,12 @@ import { WeatherService } from './services/weather.service';
     Routing,
     ToastrModule.forRoot(),
     
+    
   ],
   providers: [ ClientBranchService,
     WeatherService,
     UploadService,
     AppRoutingProviders,
-  
     ResolveLocationService
     
   ],

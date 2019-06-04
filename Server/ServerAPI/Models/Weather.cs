@@ -34,17 +34,17 @@ namespace ServerAPI.Models
         /// <summary>
         /// Tempartura
         /// </summary>
-        public decimal Temperature { get; set; }
+        public string Temperature { get; set; }
 
         /// <summary>
         /// Tempartura Minima   
         /// </summary>
-        public decimal Temp_Min { get; set; }
+        public string Temp_Min { get; set; }
 
         /// <summary>
         /// Tempartura Maxima
         /// </summary>
-        public decimal Temp_Max { get; set; }
+        public string Temp_Max { get; set; }
 
         /// <summary>
         /// Humedad
@@ -74,12 +74,12 @@ namespace ServerAPI.Models
         /// <summary>
         /// Latitud
         /// </summary>
-        public decimal Latitude { get; set; }
+        public string Latitude { get; set; }
 
         /// <summary>
         /// Longitud
         /// </summary>
-        public decimal Longitude { get; set; }
+        public string Longitude { get; set; }
     }
 
  }

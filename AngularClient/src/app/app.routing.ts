@@ -13,6 +13,7 @@ import { ForecastComponent } from './components/forecast/forecast.component';
 
 const appRoutes: Routes = [
      {path: '', component: AboutComponent},
+     {path: 'about', component: AboutComponent},
      {path: 'branches', component: ClientBranchesListComponent},
      {path: 'create-branch', component: CreateClientBranchComponent},
      {path: 'branch/:id', component: DetailClientBranchComponent},

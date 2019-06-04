@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'AngularClient';
+  title = 'Aplicacion Hecha con Angular 7 & .NET Core como ejercicio de entrevista';
+
+
+  
+  constructor() {
+  }
+
 }

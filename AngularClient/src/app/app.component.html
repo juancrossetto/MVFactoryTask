@@ -1,38 +1,20 @@
-
-
- <!-- <header>
-  <ul>
-    <li><a [routerLink]="['/branches']" [routerLinkActive]="['actived']">Sucursales</a></li>
-    <li id="logo"><a href="#"> MV Factory</a></li>
-    <li><a [routerLink]="['/create-branch']" [routerLinkActive]="['actived']">Crear Sucursal</a></li>
-  </ul>
-</header> -->
 <header>
-  <!-- Fixed navbar -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">MV Factory</a>
+    <a class="navbar-brand linkLogo" href="#">
+      <img  class="imgLogo" src="../assets/img/logo.png" alt="Logo">
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
-        <!-- <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li> -->
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/branches']" [routerLinkActive]="['actived']">Sucursales</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/create-branch']" [routerLinkActive]="['actived']" >Crear Sucursal</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/forecast']" [routerLinkActive]="['actived']" >Test </a>
-          </li>
       </ul>
-      <!-- <form class="form-inline mt-2 mt-md-0">
-        <input class="form-control mr-sm-2" id="branchFilter" type="text" placeholder="Nombre Sucursal" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Filtrar</button>
-      </form> -->
     </div>
   </nav>
 </header>

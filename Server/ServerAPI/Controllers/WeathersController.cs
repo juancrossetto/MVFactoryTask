@@ -148,7 +148,7 @@ namespace ServerAPI.Controllers
                         //Id = rawWeather.Id,
                         Code = rawWeather.Cod,
                         Country = rawWeather.Sys.Country,
-                        Name = rawWeather.Name, /**/
+                        Name = rawWeather.Name, 
                         Temperature = rawWeather.Main.Temp,
                         Temp_Min = rawWeather.Main.Temp_Min,
                         Temp_Max = rawWeather.Main.Temp_Max,

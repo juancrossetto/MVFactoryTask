@@ -40,18 +40,18 @@ namespace ServerAPI.Models
 
     public class Main
     {
-        public decimal Temp { get; set; }
+        public string Temp { get; set; }
         public string Pressure { get; set; }
         public string Humidity { get; set; }
-        public decimal Temp_Min { get; set; }
-        public decimal Temp_Max { get; set; }
+        public string Temp_Min { get; set; }
+        public string Temp_Max { get; set; }
     }
 
     public class Coordinates
     {
-        public decimal Lon { get; set; }
+        public string Lon { get; set; }
 
-        public decimal Lat { get; set; }
+        public string Lat { get; set; }
     }
 
     public class System

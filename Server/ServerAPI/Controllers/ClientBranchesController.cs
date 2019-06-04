@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using ServerAPI.Models;
+using ServerAPI.Utils;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace ServerAPI.Controllers
 {
@@ -77,16 +77,29 @@ namespace ServerAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateClientBranch(int id, ClientBranch clientBranch)
         {
-            if (id != clientBranch.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(clientBranch).State = EntityState.Modified;
-
             try
             {
+                if (id != clientBranch.Id)
+                {
+                    return BadRequest();
+                }
+
+                if (!string.IsNullOrEmpty(clientBranch.Image))
+                    clientBranch.Image = ValidateImage(clientBranch.Image);
+
+                var weather = this.GetWeatherByCity(clientBranch.City).Result.Value;
+
+                if (weather == null)
+                    throw new InvalidCityException("Ciudad no válida");
+
+                _context.Entry(clientBranch).State = EntityState.Modified;
+
+
                 await _context.SaveChangesAsync();
+            }
+            catch (InvalidCityException ex)
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -118,21 +131,27 @@ namespace ServerAPI.Controllers
                 else
                 {
                     if (!string.IsNullOrEmpty(clientBranch.Image))
-                    {
-                        //Get Image from image path
-                        clientBranch.Image = clientBranch.Image.Replace("data:image/png;base64,", "");
+                        clientBranch.Image = ValidateImage(clientBranch.Image);
 
-                    }
-                    clientBranch.Weather = this.GetWeatherByCity(clientBranch.City).Result.Value;
-                    //clientBranch.Weather = new Weather() { Clouds = "1", Country = "AR", Humidity = "10", Pressure = "15"
-                    //, Temperature = 20, WindDirection = "20", WindSpeed = 30 };
+                    var weather = this.GetWeatherByCity(clientBranch.City).Result.Value;
+
+                    if (weather == null)
+                        throw new InvalidCityException("Ciudad no válida");
+                    else
+                        clientBranch.Weather = weather;
+                    
                     _context.ClientBranches.Add(clientBranch);
                     await _context.SaveChangesAsync();
                 }
             }
+            catch (InvalidCityException ex)
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
+            }
+
             catch (Exception ex )
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
 
             return CreatedAtAction("GetClientBranch", new { id = clientBranch.Id }, clientBranch);
@@ -154,8 +173,7 @@ namespace ServerAPI.Controllers
 
             return clientBranch;
         }
-
-        //[HttpGet("[action]/{city}")]
+        
         [HttpGet("GetWeatherByCity")]
         public async Task<ActionResult<Weather>> GetWeatherByCity(string city)
         {
@@ -199,6 +217,13 @@ namespace ServerAPI.Controllers
                     return BadRequest($"Error getting weather from OpenWeather: {httpRequestException.Message}");
                 }
             }
+        }
+
+        private string ValidateImage(string image)
+        {
+            image = image.Replace("data:image/png;base64,", "");
+            image = image.Replace("data:image/jpeg;base64,", "");
+            return image;
         }
         private bool GetClientBranchByID(int id)
         {
