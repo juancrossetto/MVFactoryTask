@@ -13,7 +13,7 @@ export class ClientBranchService {
   public url: string;
   public list : ClientBranch[];
   public controllerName: string;
-  public numberRetriesError: number = 1;
+  public numberRetriesError: number = 0;
   constructor(private http:HttpClient) { 
     this.url = Global.url;
     this.controllerName = Global.ControllerNameClientBranch;
@@ -74,7 +74,7 @@ export class ClientBranchService {
   }
 
   handleError(error) {
-    debugger;
+    
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // client-side error

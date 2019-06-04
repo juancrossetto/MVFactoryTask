@@ -21,6 +21,7 @@ export class EditClientBranchComponent implements OnInit {
   public fileToUpload: File = null;
   public defaultImageValue: string =  '/assets/img/default-image.png';
   public loading: boolean;
+  operacion:string;
 
   constructor(public service: ClientBranchService,
               private _route: ActivatedRoute,
@@ -29,6 +30,7 @@ export class EditClientBranchComponent implements OnInit {
     this.title = "Edit Client Branch";
     this.url = Global.url;
     this._service = service;
+    this.operacion = "Editar";
   }
 
   ngOnInit() {

@@ -58,12 +58,12 @@ export class DetailClientBranchComponent implements OnInit {
     this._clientBranchService.deleteClientBranch(id).subscribe(
       response => {
         this.loading = false;
-        debugger;
+        
         this.toastr.success('Eliminación exitosa', 'Sucursal eliminada');
         this._router.navigate(['branches']); //Si borra bien redigirimos a la vista sucursales
       },
       error => {
-        debugger;
+        
         this.loading = false;
         console.log(<any>error);
       }

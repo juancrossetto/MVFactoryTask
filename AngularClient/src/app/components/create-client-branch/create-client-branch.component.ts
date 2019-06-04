@@ -24,12 +24,14 @@ export class CreateClientBranchComponent implements OnInit {
   public _service: ClientBranchService;
   public defaultImageValue: string =  '/assets/img/default-image.png';
   public loading: boolean;
+  operacion: string;
   constructor(public service: ClientBranchService,
               private weatherService: WeatherService,
               private toastr: ToastrService,
               private _router : Router) { 
 
       this._service = service;
+      this.operacion = "Crear";
     }
 
   ngOnInit() {
@@ -84,7 +86,7 @@ export class CreateClientBranchComponent implements OnInit {
         this.toastr.success('Creación exitosa', 'Sucursal registrada');
       },
       (error) => {
-        debugger;
+        
         this.loading = false;
         this.toastr.error(error);
       }
